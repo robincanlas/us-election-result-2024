@@ -3,10 +3,10 @@ import { Fill, Stroke, Style, Text} from 'ol/style.js';
 import Feature, { FeatureLike } from "ol/Feature";
 import { default as OlMap } from 'ol/Map';
 import { Geometry, MultiPolygon, Polygon } from "ol/geom";
-import { MapPointerMoveEventHandler } from "../hooks/useMapPointerMove";
+import { MapPointerMoveEventHandler } from "../../hooks/useMapPointerMove";
 
-const democratsColor: string = "#0078d4";
-const republicansColor: string = "#d13438";
+const democratsColor: string = "#005599";
+const republicansColor: string = "#CE0008";
 const notVotedColor: string = "#000";
 
 export const getStateResult = (feature: FeatureLike) => {

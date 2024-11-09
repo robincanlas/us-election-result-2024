@@ -2,12 +2,12 @@
 // https://eric.clst.org/tech/usgeojson/
 
 import {  useEffect } from "react";
-import useOlMap from "../hooks/useOlMap";
+import useOlMap from "../../hooks/useOlMap";
 import usGeojsonData from './gz_2010_us_040_00_20m.json';
 import GeoJSON from 'ol/format/GeoJSON.js';
 import { Vector as VectorSource} from 'ol/source.js';
 import { Vector as VectorLayer} from 'ol/layer.js';
-import useMapPointerMove from "../hooks/useMapPointerMove";
+import useMapPointerMove from "../../hooks/useMapPointerMove";
 import {  handleMouseMove, styleFunction } from "./utilities";
 import ElectionResultPopup from "../election-result-popup/election-result-popup";
 import "./us-president-election-result.css";
@@ -37,8 +37,25 @@ const UsPresidentElectionResult = () => {
 
   return (
     <div>
+      <div id="map" style={{ width: "100vw", height: "100vh" }}></div>
       <ElectionResultPopup map={map} popup={popup} addOverlay={addOverlay} />
-      <div id="map" style={{width: "100vw", height: "100vh"}}></div>
+      {/* <div style={{ width: "500px", height: "300px", position: "relative", backgroundColor: "wheat"}}>
+        Country
+        <Plot
+          style={{ justifyContent: "center", display: "flex", border: '1px solid black' }}
+          data={[{
+            type: 'bar',
+            x: [1, 10],
+            y: ["donald trump", "kamala harris"],
+            orientation: 'h',
+            marker: {
+              color: ["red", "blue"],
+            }
+          }]}
+          layout={ {width: 450, height: 250, font: { size: 11 }} }
+          config={ { responsive: true, displayModeBar: false } }
+        />
+      </div> */}
     </div>
   );
 };

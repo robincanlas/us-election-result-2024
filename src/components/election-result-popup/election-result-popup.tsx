@@ -1,13 +1,13 @@
-
 import { MutableRefObject, useCallback, useEffect, useRef, useState } from "react";
-
-import useMapPointerMove, { MapPointerMoveEventHandler } from "../hooks/useMapPointerMove";
+import useMapPointerMove, { MapPointerMoveEventHandler } from "../../hooks/useMapPointerMove";
 import { getStateResult } from "../us-president-election-result/utilities";
 import { default as OlMap } from 'ol/Map';
 import Overlay, { Positioning } from 'ol/Overlay';
 import { Pixel } from "ol/pixel";
 import { ElectionResult } from "../types/result";
 import "./election-result-popup.css";
+import ResultPopupTable from "../result-popup-table/result-popup-table";
+
 
 interface ElectionResultPopupProps {
   map: MutableRefObject<OlMap | undefined>;
@@ -15,8 +15,8 @@ interface ElectionResultPopupProps {
   addOverlay: (overlay: Overlay) => void; 
 }
 
-const popupWidth: number = 350; 
-const popupHeight: number = 200; 
+const popupWidth: number = 450; 
+const popupHeight: number = 300; 
 
 const setPopupOverlayPositioning = (pixel: Pixel) => {
   let position: Positioning = 'top-left';
@@ -74,7 +74,11 @@ const ElectionResultPopup = ({
 
   return (
     <div ref={popupRef} id="popup" className="ol-popup-presidential-result">
-      {stateResult?.stateName}
+      <div className="ol-popup-content">
+        {stateResult?.stateName}
+        {/* <ResultChart result={stateResult!} /> */}
+        <ResultPopupTable result={stateResult!} />
+      </div>
     </div>
   );
 };
