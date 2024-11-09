@@ -1,0 +1,22 @@
+.result-popup-table {
+  table {
+    min-width: 300px;
+    text-align: center;
+    border-collapse: collapse;
+  }
+
+  th {
+    color: gray;
+    border-bottom: 1px solid gray;
+  }
+
+  td {
+    .dot {
+      position: relative;
+      display: inline-block;
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+    }
+  }
+}

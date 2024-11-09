@@ -7,6 +7,7 @@ import { Pixel } from "ol/pixel";
 import { ElectionResult } from "../types/result";
 import "./election-result-popup.css";
 import ResultPopupTable from "../result-popup-table/result-popup-table";
+import useMapClick from "../../hooks/useMapClick";
 
 
 interface ElectionResultPopupProps {
@@ -71,11 +72,12 @@ const ElectionResultPopup = ({
   }, [popup]);
 
   useMapPointerMove({ map, handler: handlePopup });
+  useMapClick({ map: map.current!, handler: () => {console.log('click')} });
 
   return (
     <div ref={popupRef} id="popup" className="ol-popup-presidential-result">
       <div className="ol-popup-content">
-        {stateResult?.stateName}
+        <h3>{stateResult?.stateName}</h3>
         {/* <ResultChart result={stateResult!} /> */}
         <ResultPopupTable result={stateResult!} />
       </div>
