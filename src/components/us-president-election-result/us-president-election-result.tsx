@@ -25,7 +25,7 @@ const UsPresidentElectionResult = () => {
     const vectorLayer = new VectorLayer({
       source: vectorSource,
       style: (feature) => {
-        return styleFunction(feature, map.current!);
+        return styleFunction(feature);
       },
     }); 
 

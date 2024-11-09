@@ -45,7 +45,7 @@ const getColor = (feature: FeatureLike) => {
   }
 }
 
-const styleTextFunction = (map: OlMap, text?: string) => {
+const styleTextFunction = (text?: string) => {
   // const zoom = map.getView().getZoom();
   // const font = (zoom! + 1) * 2;
 
@@ -77,7 +77,7 @@ const getMaxPoly = (polys: Polygon[]) => {
   return polyObj[polyObj.length - 1].poly;
  }
 
-export const styleFunction = (feature: FeatureLike, map: OlMap) => {  
+export const styleFunction = (feature: FeatureLike) => {  
   return [
     new Style({
       fill: new Fill({
@@ -89,7 +89,7 @@ export const styleFunction = (feature: FeatureLike, map: OlMap) => {
       })
     }),
     new Style({
-      text: styleTextFunction(map, getStateResult(feature)?.stateCode),
+      text: styleTextFunction(getStateResult(feature)?.stateCode),
       geometry: function(feature) {
         let retPoint;
         const geom = feature.getGeometry() as Geometry;
@@ -130,7 +130,7 @@ export const handleMouseMove = (event: MapPointerMoveEventHandler, map: OlMap) =
 
   map.forEachFeatureAtPixel(pixel, function (feature) {
     selected = feature as Feature<Geometry>;
-    const styles = styleFunction(selected, map);
+    const styles = styleFunction(selected);
     styles[0].getStroke()?.setColor('black');
     styles[0].getStroke()?.setWidth(1.5);
     styles[0].setZIndex(2);

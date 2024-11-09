@@ -6,18 +6,11 @@ interface ResultChartProps {
   result: ElectionResult;
 }
 
-// interface CandidateResult {
-//   fullNames: string[];
-//   votes: number[];
-//   votePcts: number[];
-//   colors: string[];
-// }
-
 const ResultChart = ({
   result
 }: ResultChartProps) => {
   const [voteCount, setVoteCount] = useState<number[]>([]);
-  const [votePercent, setVotePercent] = useState<number[]>([]);
+  // const [votePercent, setVotePercent] = useState<number[]>([]);
   const [candidates, setCandidates] = useState<string[]>([]);
   const [colors, setColors] = useState<string[]>([]);
 
@@ -28,7 +21,7 @@ const ResultChart = ({
     const sortedCandidates = candidates.filter(candidate => candidate.lastName === 'Trump' || candidate.lastName === 'Harris').sort((a, b) => a.vote - b.vote);
     setCandidates(sortedCandidates.map(candidate => candidate.fullName));
     setVoteCount(sortedCandidates.map(candidate => candidate.vote));
-    setVotePercent(sortedCandidates.map(candidate => candidate.votePct));
+    // setVotePercent(sortedCandidates.map(candidate => candidate.votePct));
     setColors(sortedCandidates.map(candidate => candidate.color));
     
   }, [result]);
