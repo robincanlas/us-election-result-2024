@@ -6,6 +6,12 @@ export interface MapPointerMoveEventHandler {
   coordinate: number[];
 }
 
+declare global {
+  interface Window { opera: string; }
+}
+
+window.opera = window.opera || '';
+
 interface useMapPointerMoveProps { 
   map: React.MutableRefObject<OlMap | undefined>;
   handler: (event: MapPointerMoveEventHandler, map: OlMap) => void;
